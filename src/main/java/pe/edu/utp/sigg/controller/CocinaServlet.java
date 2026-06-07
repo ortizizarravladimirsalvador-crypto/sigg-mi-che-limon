@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import pe.edu.utp.sigg.dto.PedidoCocinaDTO;
 import pe.edu.utp.sigg.service.CocinaService;
-
+//hola mundo
 /**
  * CocinaServlet controla la pantalla de pedidos enviados a cocina.
  *
