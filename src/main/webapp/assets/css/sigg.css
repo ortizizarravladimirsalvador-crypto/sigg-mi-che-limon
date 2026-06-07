@@ -1,0 +1,1452 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23 may. 2026, 6:39:04 a. m.
+    Author     : FRANCK
+*/
+
+
+                /* ESTILOS PARA LOGIN */
+/* Variables globales de color para mantener consistencia visual en todo el sistema */
+:root {
+    --sigg-green: #1f7a4d;
+    --sigg-green-dark: #155c39;
+    --sigg-soft-green: #eaf6ef;
+    --sigg-bg: #f5f7f4;
+    --sigg-text: #1f2a24;
+}
+
+/* Estilo base del cuerpo: define la fuente y color general del texto */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--sigg-text);
+}
+
+/* Fondo visual del login con degradados suaves para dar apariencia moderna */
+.sigg-login-body {
+    background:
+        radial-gradient(circle at top left, rgba(31, 122, 77, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(245, 183, 77, 0.18), transparent 35%),
+        var(--sigg-bg);
+}
+
+/* Tarjeta principal del login: define tamaño, bordes redondeados y fondo */
+.login-card {
+    width: min(1040px, 94vw);
+    min-height: 620px;
+    overflow: hidden;
+    border-radius: 32px;
+    background: #ffffff;
+}
+
+/* Panel izquierdo del login: contiene marca, nombre del sistema y descripción */
+.login-brand-panel {
+    padding: 56px;
+    background:
+        linear-gradient(135deg, rgba(31, 122, 77, 0.95), rgba(21, 92, 57, 0.92)),
+        url("../img/bg-restaurant.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* Ajusta los textos secundarios dentro del panel verde para que sean legibles */
+.login-brand-panel .text-muted {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Insignia SIGG: caja decorativa que refuerza la identidad del sistema */
+.brand-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Estilo general para los inputs del formulario */
+.form-control {
+    border-radius: 14px;
+    border: 1px solid #dde5df;
+}
+
+/* Efecto visual cuando el usuario selecciona un input */
+.form-control:focus {
+    border-color: var(--sigg-green);
+    box-shadow: 0 0 0 0.2rem rgba(31, 122, 77, 0.16);
+}
+
+/* Botón principal de ingreso: usa el color corporativo del sistema */
+.btn-success {
+    border: none;
+    border-radius: 14px;
+    background: var(--sigg-green);
+}
+
+/* Efecto hover del botón para mejorar la interacción visual */
+.btn-success:hover {
+    background: var(--sigg-green-dark);
+}
+
+/* Caja informativa con las credenciales temporales de prueba */
+.demo-access {
+    background: var(--sigg-soft-green);
+    border: 1px solid #d6ecdf;
+}
+
+
+            /* ESTILOS PARA EL DASHBOARD*/
+            
+/* Fondo general de las pantallas internas del sistema */
+.sigg-app-body {
+    min-height: 100vh;
+    background: #f4f7f3;
+}
+
+/* Layout principal: divide el sistema en menú lateral y contenido */
+.sigg-layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+}
+
+/* Menú lateral izquierdo */
+.sigg-sidebar {
+    padding: 28px 22px;
+    background: #ffffff;
+    border-right: 1px solid #e5ece7;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Marca del sistema dentro del sidebar */
+.sigg-sidebar-brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+/* Texto secundario de la marca */
+.sigg-sidebar-brand span {
+    display: block;
+    font-size: 0.82rem;
+    color: #7a8780;
+}
+
+/* Logo pequeño del sistema */
+.sigg-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    color: white;
+    background: var(--sigg-green);
+}
+
+/* Contenedor de enlaces del menú */
+.sigg-menu {
+    display: grid;
+    gap: 8px;
+}
+
+/* Enlaces del menú lateral */
+.sigg-menu a {
+    padding: 12px 14px;
+    border-radius: 14px;
+    color: #53615a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Estado activo y hover del menú */
+.sigg-menu a.active,
+.sigg-menu a:hover {
+    color: var(--sigg-green-dark);
+    background: var(--sigg-soft-green);
+}
+
+/* Pie del sidebar, usado para cerrar sesión */
+.sigg-sidebar-footer {
+    margin-top: auto;
+}
+
+/* Enlace de cierre de sesión */
+.sigg-sidebar-footer a {
+    color: #8a2f2f;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Área principal de contenido */
+.sigg-main {
+    padding: 32px;
+}
+
+/* Barra superior del dashboard */
+.sigg-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+/* Etiqueta del usuario activo */
+.sigg-user-pill {
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid #e4ece6;
+    font-weight: 600;
+}
+
+/* Tarjeta de bienvenida */
+.sigg-hero-card {
+    padding: 28px;
+    border-radius: 26px;
+    background: white;
+    border: 1px solid #e4ece6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Tarjetas de indicadores principales */
+.sigg-kpi-card {
+    padding: 22px;
+    border-radius: 22px;
+    background: white;
+    border: 1px solid #e4ece6;
+}
+
+/* Título pequeño de cada indicador */
+.sigg-kpi-card span {
+    display: block;
+    color: #718078;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Valor principal del indicador */
+.sigg-kpi-card strong {
+    font-size: 1.7rem;
+}
+
+/* Paneles inferiores del dashboard */
+.sigg-panel {
+    padding: 24px;
+    border-radius: 24px;
+    background: white;
+    border: 1px solid #e4ece6;
+}
+
+/* Cabecera de cada panel */
+.sigg-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+/* Tarjeta de pedido dentro de la cola */
+.sigg-order-item {
+    padding: 16px;
+    border-radius: 18px;
+    background: #f8faf8;
+    border: 1px solid #edf2ee;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+/* Ajuste responsive: en pantallas pequeñas el sidebar se coloca arriba */
+@media (max-width: 900px) {
+    .sigg-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sigg-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e5ece7;
+    }
+
+    .sigg-hero-card,
+    .sigg-topbar,
+    .sigg-order-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Tarjeta KPI informativa, usada para actividad operativa como pedidos activos */
+.kpi-info {
+    border-left: 6px solid #0ea5e9;
+    background: #f0f9ff;
+}
+
+/* Valor principal de la tarjeta informativa */
+.kpi-info strong {
+    color: #0369a1;
+}
+
+                            /*ESTILOS PARA MESAS*/
+
+/* Leyenda de colores para identificar estados de mesas */
+.sigg-status-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: #68756e;
+    font-size: 0.9rem;
+}
+
+/* Punto de color usado en la leyenda de estados */
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Color de mesa libre */
+.status-dot.libre {
+    background: #198754;
+}
+
+/* Color de mesa ocupada */
+.status-dot.ocupada {
+    background: #ffc107;
+}
+
+/* Color de mesa reservada */
+.status-dot.reservada {
+    background: #6c757d;
+}
+
+/* Grilla que distribuye las mesas en tarjetas responsive */
+.mesa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta visual de cada mesa */
+.mesa-card {
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid #e4ece6;
+    background: #ffffff;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Efecto visual al pasar el mouse por una mesa */
+.mesa-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(31, 42, 36, 0.08);
+}
+
+/* Cabecera interna de la tarjeta de mesa */
+.mesa-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Ícono central de cada tarjeta de mesa */
+.mesa-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    margin: 18px 0;
+    background: #f3f7f4;
+}
+
+/* Borde lateral para mesas libres */
+.estado-libre {
+    border-left: 6px solid #198754;
+}
+
+/* Borde lateral para mesas ocupadas */
+.estado-ocupada {
+    border-left: 6px solid #ffc107;
+}
+
+/* Borde lateral para mesas reservadas */
+.estado-reservada {
+    border-left: 6px solid #6c757d;
+}
+
+/* Contenedor de acciones dentro de cada mesa */
+.mesa-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Punto de color específico para la leyenda del módulo Mesas */
+.mesa-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Color de leyenda: mesa libre */
+.mesa-dot.libre {
+    background: #198754;
+}
+
+/* Color de leyenda: mesa ocupada */
+.mesa-dot.ocupada {
+    background: #f97316;
+}
+
+/* Color de leyenda: mesa reservada */
+.mesa-dot.reservada {
+    background: #6366f1;
+}
+
+/* Tarjeta KPI para mesas reservadas */
+.kpi-reserved {
+    border-left: 6px solid #6366f1;
+    background: #eef2ff;
+}
+
+/* Valor principal de la tarjeta de mesas reservadas */
+.kpi-reserved strong {
+    color: #4338ca;
+}
+
+/* Badge base para estados de mesas */
+.badge-mesa {
+    border-radius: 999px;
+    padding: 7px 12px;
+}
+
+/* Badge para mesa libre */
+.badge-mesa-libre {
+    background: #198754;
+    color: #ffffff;
+}
+
+/* Badge para mesa ocupada */
+.badge-mesa-ocupada {
+    background: #f97316;
+    color: #111827;
+}
+
+/* Badge para mesa reservada */
+.badge-mesa-reservada {
+    background: #6366f1;
+    color: #ffffff;
+}
+
+/* Borde lateral para mesas libres */
+.estado-libre {
+    border-left: 6px solid #198754;
+}
+
+/* Borde lateral para mesas ocupadas */
+.estado-ocupada {
+    border-left: 6px solid #f97316;
+}
+
+/* Borde lateral para mesas reservadas */
+.estado-reservada {
+    border-left: 6px solid #6366f1;
+}
+
+
+                        /* ESTILOS STOCK */
+
+/* Lista vertical de tarjetas de stock */
+.stock-list {
+    display: grid;
+    gap: 16px;
+}
+
+/* Tarjeta visual para cada plato con stock diario */
+.stock-card {
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid #e4ece6;
+    background: #ffffff;
+}
+
+/* Cabecera de la tarjeta de stock: nombre del plato y estado */
+.stock-card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+/* Indicadores numéricos: inicial, disponible y vendidos */
+.stock-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* Caja interna de cada métrica */
+.stock-metrics div {
+    padding: 14px;
+    border-radius: 16px;
+    background: #f8faf8;
+    border: 1px solid #edf2ee;
+}
+
+/* Texto pequeño de cada métrica */
+.stock-metrics span {
+    display: block;
+    color: #718078;
+    font-size: 0.82rem;
+    margin-bottom: 4px;
+}
+
+/* Valor principal de cada métrica */
+.stock-metrics strong {
+    font-size: 1.2rem;
+}
+
+/* Barra de progreso del stock */
+.stock-progress {
+    height: 24px;
+    border-radius: 999px;
+    background: #eef3ef;
+    overflow: hidden;
+}
+
+/* Color base de la barra de progreso */
+.stock-progress .progress-bar {
+    background: var(--sigg-green);
+    font-weight: 700;
+}
+
+/* Borde lateral para stock disponible */
+.stock-disponible {
+    border-left: 6px solid #198754;
+}
+
+/* Borde lateral para stock crítico */
+.stock-critico {
+    border-left: 6px solid #ffc107;
+}
+
+/* Borde lateral para stock agotado */
+.stock-agotado {
+    border-left: 6px solid #6c757d;
+}
+
+/* Ajuste responsive para pantallas pequeñas */
+@media (max-width: 700px) {
+    .stock-card-main {
+        flex-direction: column;
+    }
+
+    .stock-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Punto de color específico para la leyenda del módulo Stock */
+.stock-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Color de leyenda: plato disponible */
+.stock-dot.disponible {
+    background: #198754;
+}
+
+/* Color de leyenda: stock crítico */
+.stock-dot.critico {
+    background: #f97316;
+}
+
+/* Color de leyenda: plato agotado */
+.stock-dot.agotado {
+    background: #dc3545;
+}
+
+/* Tarjeta KPI para estado disponible */
+.kpi-success {
+    border-left: 6px solid #198754;
+    background: #f0faf4;
+}
+
+/* Tarjeta KPI para estado crítico */
+.kpi-warning {
+    border-left: 6px solid #f97316;
+    background: #fff7ed;
+}
+
+/* Tarjeta KPI para estado agotado */
+.kpi-danger {
+    border-left: 6px solid #dc3545;
+    background: #fff1f2;
+}
+
+/* Mejora visual del texto dentro de KPI positivo */
+.kpi-success strong {
+    color: #146c43;
+}
+
+/* Mejora visual del texto dentro de KPI crítico */
+.kpi-warning strong {
+    color: #c2410c;
+}
+
+/* Mejora visual del texto dentro de KPI agotado */
+.kpi-danger strong {
+    color: #b02a37;
+}
+
+/* Badge base para estados del stock */
+.badge-stock {
+    border-radius: 999px;
+    padding: 7px 12px;
+}
+
+/* Badge para plato disponible */
+.badge-stock-disponible {
+    background: #198754;
+    color: #ffffff;
+}
+
+/* Badge para stock crítico */
+.badge-stock-critico {
+    background: #f97316;
+    color: #111827;
+}
+
+/* Badge para plato agotado */
+.badge-stock-agotado {
+    background: #dc3545;
+    color: #ffffff;
+}
+
+/* Borde lateral para stock crítico en color naranja */
+.stock-critico {
+    border-left: 6px solid #f97316;
+}
+
+/* Borde lateral para stock agotado en color rojo */
+.stock-agotado {
+    border-left: 6px solid #dc3545;
+}
+
+/* Barra verde para stock disponible */
+.stock-bar-disponible {
+    background: #198754 !important;
+}
+
+/* Barra naranja para stock crítico */
+.stock-bar-critico {
+    background: #f97316 !important;
+}
+
+/* Barra roja para stock agotado */
+.stock-bar-agotado {
+    background: #dc3545 !important;
+}
+
+
+                    /* ESTILO PARA PEDIDOS */
+/* Layout del módulo Pedidos: catálogo a la izquierda y resumen a la derecha */
+.pedido-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Columna principal donde se muestran mesa y platos */
+.pedido-catalogo {
+    min-width: 0;
+}
+
+/* Panel lateral derecho del pedido */
+.pedido-resumen {
+    position: sticky;
+    top: 24px;
+}
+
+/* Tarjeta fija del resumen del pedido */
+.pedido-resumen-card {
+    min-height: 520px;
+}
+
+/* Grilla responsive de platos disponibles */
+.plato-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta individual de plato */
+.plato-card {
+    padding: 18px;
+    border-radius: 22px;
+    border: 1px solid #e4ece6;
+    background: #ffffff;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Efecto visual al pasar el mouse sobre un plato */
+.plato-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(31, 42, 36, 0.08);
+}
+
+/* Cabecera de la tarjeta de plato */
+.plato-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Precio del plato resaltado */
+.plato-precio {
+    color: var(--sigg-green-dark);
+    white-space: nowrap;
+}
+
+/* Metadatos del plato: tiempo y stock */
+.plato-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 16px;
+    color: #6c7a72;
+    font-size: 0.9rem;
+}
+
+/* Estado vacío del resumen del pedido */
+.pedido-empty {
+    padding: 28px 18px;
+    border-radius: 20px;
+    background: #f8faf8;
+    border: 1px dashed #dce8e0;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* Ícono del estado vacío */
+.pedido-empty-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+/* Filas de resumen: ítems, tiempo y subtotal */
+.pedido-summary-row {
+    padding: 14px 0;
+    border-bottom: 1px solid #edf2ee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Última fila del resumen con más espacio inferior */
+.pedido-summary-row:last-of-type {
+    margin-bottom: 18px;
+}
+
+/* Ajuste responsive para pantallas medianas y pequeñas */
+@media (max-width: 1100px) {
+    .pedido-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .pedido-resumen {
+        position: static;
+    }
+}
+
+            /* ESTILO AL pedido temporal con sesión */
+            
+/* Lista de platos agregados al pedido actual */
+.pedido-items-list {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+/* Fila de cada plato agregado al resumen */
+.pedido-item-row {
+    padding: 14px;
+    border-radius: 16px;
+    background: #f8faf8;
+    border: 1px solid #edf2ee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+
+                        /* ESTILOS - ENVIAR PEDIDO A COCINA */
+/* Grilla de pedidos en cocina */
+.cocina-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta de pedido recibido en cocina */
+.cocina-card {
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid #e4ece6;
+    background: #ffffff;
+}
+
+/* Cabecera de la tarjeta de cocina */
+.cocina-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+/* Lista de platos dentro del pedido */
+.cocina-items {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+/* Fila de plato solicitado */
+.cocina-item-row {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #f8faf8;
+    border: 1px solid #edf2ee;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Caja visual para observaciones del pedido */
+.cocina-observacion {
+    padding: 14px;
+    border-radius: 16px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    margin-bottom: 16px;
+}
+
+/* Botones de acción dentro de cocina */
+.cocina-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Punto de color para estados de pedido */
+.pedido-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Estado pendiente */
+.pedido-dot.pendiente {
+    background: #f97316;
+}
+
+/* Estado en preparación */
+.pedido-dot.preparacion {
+    background: #0ea5e9;
+}
+
+/* Estado listo */
+.pedido-dot.listo {
+    background: #198754;
+}
+
+/* Badge base de pedidos en cocina */
+.badge-pedido {
+    border-radius: 999px;
+    padding: 7px 12px;
+}
+
+/* Badge pedido pendiente */
+.badge-pedido-pendiente {
+    background: #f97316;
+    color: #111827;
+}
+
+/* Borde lateral para pedido pendiente */
+.pedido-pendiente {
+    border-left: 6px solid #f97316;
+}
+
+@media (max-width: 900px) {
+    .cocina-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cocina-card-header,
+    .cocina-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+                /* ESTILO PARA PLATOS INACTIVOS */
+/* Badge para producto inactivo en la jornada */
+.badge-stock-inactivo {
+    background: #6c757d;
+    color: #ffffff;
+}
+
+/* Borde lateral para stock inactivo */
+.stock-inactivo {
+    border-left: 6px solid #6c757d;
+}
+
+/* Barra gris para stock inactivo */
+.stock-bar-inactivo {
+    background: #6c757d !important;
+}
+
+                    /* ESTILOS PARA SEPARAR PLATOS POR CATEGORÍA */
+/* Contenedor general de categorías en el módulo Pedidos */
+.categoria-productos-lista {
+    display: grid;
+    gap: 26px;
+}
+
+/* Bloque visual de cada categoría */
+.pedido-categoria {
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #e4ece6;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Franja superior decorativa de la categoría */
+.pedido-categoria::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: #198754;
+}
+
+/* Cabecera de cada categoría */
+.pedido-categoria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+/* Texto pequeño encima del nombre de categoría */
+.categoria-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6c7a72;
+    margin-bottom: 4px;
+}
+
+/* Título de categoría */
+.pedido-categoria-header h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #061512;
+}
+
+/* Contador de productos por categoría */
+.categoria-count {
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: #f2f7f3;
+    color: #315144;
+    white-space: nowrap;
+}
+
+/* Color para Platos Marinos */
+.pedido-categoria.categoria-marinos::before {
+    background: #0f766e;
+}
+
+.pedido-categoria.categoria-marinos {
+    background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 26%);
+}
+
+/* Color para Sudados */
+.pedido-categoria.categoria-sudados::before {
+    background: #f97316;
+}
+
+.pedido-categoria.categoria-sudados {
+    background: linear-gradient(180deg, #fff7ed 0%, #ffffff 26%);
+}
+
+/* Color para Platos Criollos */
+.pedido-categoria.categoria-criollos::before {
+    background: #ca8a04;
+}
+
+.pedido-categoria.categoria-criollos {
+    background: linear-gradient(180deg, #fefce8 0%, #ffffff 26%);
+}
+
+/* Color para Guarniciones */
+.pedido-categoria.categoria-guarniciones::before {
+    background: #78716c;
+}
+
+.pedido-categoria.categoria-guarniciones {
+    background: linear-gradient(180deg, #fafaf9 0%, #ffffff 26%);
+}
+
+/* Color para Bebidas */
+.pedido-categoria.categoria-bebidas::before {
+    background: #0284c7;
+}
+
+.pedido-categoria.categoria-bebidas {
+    background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 26%);
+}
+
+/* Ajuste para que las tarjetas dentro de categorías respiren mejor */
+.pedido-categoria .plato-grid {
+    margin-top: 6px;
+}
+
+/* Mejora visual de la unidad de medida dentro de stock */
+.plato-meta small {
+    font-size: 0.72rem;
+    color: #7b8a83;
+    margin-left: 2px;
+}
+
+/* Responsive para la cabecera de categoría */
+@media (max-width: 700px) {
+    .pedido-categoria-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ==========================================================
+   BLOQUES VISUALES POR CATEGORÍA
+   Se usan en Pedidos y Stock para separar productos por familia.
+   ========================================================== */
+
+/* Lista general de categorías */
+.categoria-productos-lista {
+    display: grid;
+    gap: 28px;
+}
+
+/* Bloque base de categoría */
+.pedido-categoria,
+.stock-categoria {
+    border-radius: 24px;
+    border: 1px solid #e2e8e4;
+    padding: 22px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);
+}
+
+/* Franja superior de color */
+.pedido-categoria::before,
+.stock-categoria::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 7px;
+    width: 100%;
+    background: #198754;
+}
+
+/* Cabecera de cada categoría */
+.pedido-categoria-header,
+.stock-categoria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Etiqueta pequeña */
+.categoria-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64746b;
+    margin-bottom: 4px;
+}
+
+/* Título de categoría */
+.pedido-categoria-header h4,
+.stock-categoria-header h4 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #061512;
+}
+
+/* Contador de productos */
+.categoria-count {
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    background: #f1f5f2;
+    color: #315144;
+    white-space: nowrap;
+}
+
+/* Platos Marinos */
+.categoria-marinos::before {
+    background: #0f766e;
+}
+
+.categoria-marinos {
+    background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 34%);
+}
+
+/* Sudados */
+.categoria-sudados::before {
+    background: #f97316;
+}
+
+.categoria-sudados {
+    background: linear-gradient(180deg, #fff7ed 0%, #ffffff 34%);
+}
+
+/* Platos Criollos */
+.categoria-criollos::before {
+    background: #ca8a04;
+}
+
+.categoria-criollos {
+    background: linear-gradient(180deg, #fefce8 0%, #ffffff 34%);
+}
+
+/* Guarniciones */
+.categoria-guarniciones::before {
+    background: #78716c;
+}
+
+.categoria-guarniciones {
+    background: linear-gradient(180deg, #fafaf9 0%, #ffffff 34%);
+}
+
+/* Bebidas */
+.categoria-bebidas::before {
+    background: #0284c7;
+}
+
+.categoria-bebidas {
+    background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 34%);
+}
+
+/* Ajuste de grilla dentro de categorías */
+.pedido-categoria .plato-grid,
+.stock-categoria .stock-lista {
+    margin-top: 8px;
+}
+
+/* Unidad de medida en tarjetas */
+.plato-meta small,
+.stock-unit {
+    font-size: 0.72rem;
+    color: #7b8a83;
+    margin-left: 2px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .pedido-categoria-header,
+    .stock-categoria-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+            /* STOCK AGRUPADO */
+/* Lista interna de productos en stock */
+.stock-lista {
+    display: grid;
+    gap: 18px;
+}
+
+/* Cabecera de cada tarjeta de stock */
+.stock-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+/* Métricas internas del stock */
+.stock-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.stock-metrics div {
+    background: #f8faf8;
+    border: 1px solid #edf2ee;
+    border-radius: 14px;
+    padding: 13px;
+}
+
+.stock-metrics span {
+    display: block;
+    color: #6c7a72;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.stock-metrics strong {
+    font-size: 1.15rem;
+    color: #061512;
+}
+
+/* Barra de progreso */
+.stock-progress {
+    width: 100%;
+    height: 24px;
+    background: #edf4ef;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.stock-bar {
+    height: 100%;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 24px;
+}
+
+/* Colores de barra por estado */
+.stock-bar-disponible {
+    background: #198754;
+}
+
+.stock-bar-critico {
+    background: #f97316;
+}
+
+.stock-bar-agotado {
+    background: #dc3545;
+}
+
+.stock-bar-inactivo {
+    background: #6c757d;
+}
+
+@media (max-width: 800px) {
+    .stock-card-header {
+        flex-direction: column;
+    }
+
+    .stock-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   CATEGORÍAS VISUALES - PEDIDOS Y STOCK
+   Este bloque fuerza los colores por categoría.
+   ========================================================== */
+
+.categoria-productos-lista {
+    display: grid !important;
+    gap: 28px !important;
+}
+
+/* Bloque base de categoría para Pedidos y Stock */
+.pedido-categoria,
+.stock-categoria {
+    border-radius: 24px !important;
+    border: 1px solid #dfe8e2 !important;
+    padding: 22px !important;
+    margin-bottom: 26px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Franja superior de color */
+.pedido-categoria::before,
+.stock-categoria::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 8px !important;
+    width: 100% !important;
+    background: #198754 !important;
+}
+
+/* Cabecera de categoría */
+.pedido-categoria-header,
+.stock-categoria-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-bottom: 20px !important;
+    padding-top: 6px !important;
+}
+
+/* Etiqueta "Categoría" */
+.categoria-label {
+    display: inline-block !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: #64746b !important;
+    margin-bottom: 4px !important;
+}
+
+/* Título de categoría */
+.pedido-categoria-header h4,
+.stock-categoria-header h4 {
+    margin: 0 !important;
+    font-size: 1.35rem !important;
+    font-weight: 900 !important;
+    color: #061512 !important;
+}
+
+/* Contador de productos */
+.categoria-count {
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    background: #ffffff !important;
+    color: #315144 !important;
+    border: 1px solid #dce8e0 !important;
+    white-space: nowrap !important;
+}
+
+/* =========================
+   Platos Marinos
+   Verde agua
+   ========================= */
+.pedido-categoria.categoria-marinos,
+.stock-categoria.categoria-marinos {
+    background: linear-gradient(180deg, #e6fffa 0%, #ffffff 38%) !important;
+    border-color: #99f6e4 !important;
+}
+
+.pedido-categoria.categoria-marinos::before,
+.stock-categoria.categoria-marinos::before {
+    background: #0f766e !important;
+}
+
+/* =========================
+   Sudados
+   Naranja suave
+   ========================= */
+.pedido-categoria.categoria-sudados,
+.stock-categoria.categoria-sudados {
+    background: linear-gradient(180deg, #fff7ed 0%, #ffffff 38%) !important;
+    border-color: #fed7aa !important;
+}
+
+.pedido-categoria.categoria-sudados::before,
+.stock-categoria.categoria-sudados::before {
+    background: #f97316 !important;
+}
+
+/* =========================
+   Platos Criollos
+   Amarillo cálido
+   ========================= */
+.pedido-categoria.categoria-criollos,
+.stock-categoria.categoria-criollos {
+    background: linear-gradient(180deg, #fefce8 0%, #ffffff 38%) !important;
+    border-color: #fde68a !important;
+}
+
+.pedido-categoria.categoria-criollos::before,
+.stock-categoria.categoria-criollos::before {
+    background: #ca8a04 !important;
+}
+
+/* =========================
+   Guarniciones
+   Beige / gris cálido
+   ========================= */
+.pedido-categoria.categoria-guarniciones,
+.stock-categoria.categoria-guarniciones {
+    background: linear-gradient(180deg, #fafaf9 0%, #ffffff 38%) !important;
+    border-color: #d6d3d1 !important;
+}
+
+.pedido-categoria.categoria-guarniciones::before,
+.stock-categoria.categoria-guarniciones::before {
+    background: #78716c !important;
+}
+
+/* =========================
+   Bebidas
+   Azul suave
+   ========================= */
+.pedido-categoria.categoria-bebidas,
+.stock-categoria.categoria-bebidas {
+    background: linear-gradient(180deg, #eff6ff 0%, #ffffff 38%) !important;
+    border-color: #bfdbfe !important;
+}
+
+.pedido-categoria.categoria-bebidas::before,
+.stock-categoria.categoria-bebidas::before {
+    background: #0284c7 !important;
+}
