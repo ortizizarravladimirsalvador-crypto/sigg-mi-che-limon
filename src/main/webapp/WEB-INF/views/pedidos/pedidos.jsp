@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pedidos
-    Created on : 25 may. 2026, 11:03:01 a. m.
-    Author     : FRANCK
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
 
@@ -11,26 +5,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-
-    <!-- Título mostrado en la pestaña del navegador -->
     <title>SIGG Mi Che Limón | Pedidos</title>
 
-    <!-- Permite que la pantalla se adapte a diferentes tamaños -->
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Bootstrap local -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
-
-    <!-- Estilos personalizados del sistema -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sigg.css">
 </head>
 
 <body class="sigg-app-body">
 
-    <!-- Layout general del sistema interno -->
+    
     <div class="sigg-layout">
 
-        <!-- Menú lateral principal -->
+       
         <aside class="sigg-sidebar">
             <div class="sigg-sidebar-brand">
                 <div class="sigg-logo">SIGG</div>
@@ -40,27 +28,45 @@
                 </div>
             </div>
 
-            <!-- Menú de navegación. Pedidos queda activo en esta pantalla. -->
+          
             <nav class="sigg-menu">
-                <a href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
-                <a href="${pageContext.request.contextPath}/mesas">Mesas</a>
-                <a class="active" href="${pageContext.request.contextPath}/pedidos">Pedidos</a>
-                <a href="${pageContext.request.contextPath}/cocina">Cocina</a>
-                <a href="${pageContext.request.contextPath}/stock">Stock</a>
-                <a href="#">Ventas y caja</a>
-                <a href="#">Reportes</a>
-                <a href="#">Usuarios</a>
-            </nav>
+              <a href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
+
+             <%-- Mesas y Pedidos: admin y mesero --%>
+               <c:if test="${rol == 'admin' || rol == 'mesero'}">
+                  <a href="${pageContext.request.contextPath}/mesas">Mesas</a>
+                  <a href="${pageContext.request.contextPath}/pedidos">Pedidos</a>
+               </c:if>
+                  
+            <%-- Platos: admin y cocinero --%>
+                <c:if test="${rol == 'admin' || rol == 'cocinero'}">
+                  <a href="${pageContext.request.contextPath}/platos">Platos</a>
+               </c:if>
+
+
+             <%-- Cocina: admin y cocinero --%>
+               <c:if test="${rol == 'admin' || rol == 'cocinero'}">
+                  <a href="${pageContext.request.contextPath}/cocina">Cocina</a>
+              </c:if>
+
+              <%-- Stock, Caja, Reportes, Usuarios: solo admin --%>
+               <c:if test="${rol == 'admin'}">
+                   <a href="${pageContext.request.contextPath}/stock">Stock</a>
+                 <a href="${pageContext.request.contextPath}/caja">Ventas y caja</a>
+                 <a href="#">Reportes</a>
+                 <a href="${pageContext.request.contextPath}/usuarios">Usuarios</a>
+              </c:if>
+          </nav>
 
             <div class="sigg-sidebar-footer">
-                <a href="${pageContext.request.contextPath}/login">Cerrar sesión</a>
+                <a href="${pageContext.request.contextPath}/login?accion=logout">Cerrar sesión</a>
             </div>
         </aside>
 
-        <!-- Contenido principal -->
+       
         <main class="sigg-main">
 
-            <!-- Encabezado superior -->
+            
             <header class="sigg-topbar">
                 <div>
                     <p class="text-muted mb-1">Comandas digitales</p>
@@ -72,7 +78,7 @@
                 </div>
             </header>
 
-            <!-- Bloque de explicación del módulo -->
+          
             <section class="sigg-hero-card mb-4">
                 <div>
                     <h2 class="h4 fw-bold">Nuevo pedido</h2>
@@ -85,7 +91,7 @@
                     ${totalPlatosDisponibles} platos disponibles
                 </span>
             </section>
-                <!-- Mensajes temporales enviados desde PedidoServlet -->
+                
                 <c:if test="${not empty mensajeExito}">
                     <div class="alert alert-success" role="alert">
                         ${mensajeExito}
@@ -98,13 +104,13 @@
                     </div>
                 </c:if>
 
-            <!-- Distribución principal: catálogo de platos + resumen del pedido -->
+        
             <section class="pedido-layout">
 
-                <!-- Columna izquierda: selección de mesa y platos -->
+            
                 <div class="pedido-catalogo">
 
-                    <!-- Panel para seleccionar mesa -->
+                 
                     <div class="sigg-panel mb-4">
                         <div class="sigg-panel-header">
                             <h3 class="h5 fw-bold mb-0">Seleccionar mesa</h3>
@@ -112,21 +118,17 @@
                         </div>
 
                         
-                        <!-- Selector de mesas libres. Su valor se copiará a los formularios de agregar plato. -->
-                        <select id="idMesaSelect" class="form-select form-select-lg">
-                            <option value="0" ${mesaSeleccionada == 0 ? 'selected' : ''}>
-                                Elige una mesa libre
-                            </option>
-
+                        <select name="idMesa" class="form-select">
                             <c:forEach var="mesa" items="${mesasLibres}">
-                                <option value="${mesa.idMesa}" ${mesa.idMesa == mesaSeleccionada ? 'selected' : ''}>
-                                    Mesa ${mesa.numeroMesa} · Capacidad ${mesa.capacidad} personas
-                                </option>
-                            </c:forEach>
-                        </select>
+                               <option value="${mesa.idMesa}"
+                                   ${mesa.idMesa == mesaSeleccionada ? 'selected' : ''}>
+                                   Mesa ${mesa.numeroMesa}
+                               </option>
+                          </c:forEach>
+                       </select>
                     </div>
 
-                    <!-- Panel de platos disponibles -->
+                 
                     <div class="sigg-panel">
                         <div class="sigg-panel-header">
                             <h3 class="h5 fw-bold mb-0">Platos disponibles</h3>
@@ -138,8 +140,7 @@
                             </div>
                         </div>
 
-                        <!-- Grilla de platos para agregar al pedido -->
-                        <!-- Lista de productos agrupados por categoría -->
+                    
                         <div class="categoria-productos-lista">
 
                             <c:forEach var="grupo" items="${categoriasPlatos}">
@@ -158,7 +159,7 @@
                                         </span>
                                     </div>
 
-                                    <!-- Grilla de productos de la categoría -->
+                                   
                                     <div class="plato-grid">
 
                                         <c:forEach var="item" items="${grupo.productos}">
@@ -189,7 +190,6 @@
                                                     </span>
                                                 </div>
 
-                                                <!-- Formulario que agrega el producto al pedido temporal -->
                                                 <form method="post" action="${pageContext.request.contextPath}/pedidos">
                                                     <input type="hidden" name="accion" value="agregar">
                                                     <input type="hidden" name="idPlato" value="${item.plato.idPlato}">
@@ -213,7 +213,7 @@
                     </div>
                 </div>
 
-                <!-- Columna derecha: resumen del pedido actual -->
+               
                 <aside class="pedido-resumen">
 
                     <div class="sigg-panel pedido-resumen-card">
@@ -229,7 +229,7 @@
                             </form>
                         </div>
 
-                        <!-- Lista o estado vacío del pedido actual -->
+                      
                         <c:choose>
                             <c:when test="${empty pedidoItems}">
                                 <div class="pedido-empty">
@@ -258,7 +258,7 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <!-- Métricas temporales del pedido -->
+                     
                         <div class="pedido-summary-row">
                             <span>Ítems</span>
                             <strong>${itemsPedido}</strong>
@@ -274,11 +274,7 @@
                             <strong>S/ ${subtotal}</strong>
                         </div>
 
-                        <!-- 
-                            Formulario final del pedido.
-                            Incluye observaciones + acción enviar a cocina.
-                            Así garantizamos que las observaciones sí lleguen al PedidoServlet.
-                        -->
+                       
                         <form method="post" action="${pageContext.request.contextPath}/pedidos">
 
                             <input type="hidden" name="accion" value="enviarCocina">
@@ -311,13 +307,10 @@
         </main>
     </div>
 
-    <!-- JavaScript de Bootstrap -->
+ 
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.bundle.min.js"></script>
     <script>
-        /*
-         * Sincroniza la mesa seleccionada con todos los formularios de platos.
-         * Así, cuando el usuario presiona "+ Agregar", también se envía la mesa elegida.
-         */
+       
         const mesaSelect = document.getElementById("idMesaSelect");
         const mesaHiddenInputs = document.querySelectorAll(".mesa-hidden");
 
